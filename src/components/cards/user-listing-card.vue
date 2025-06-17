@@ -2,8 +2,8 @@
 import type { User } from 'types/schema/user'
 import Paragraph from 'components/typography/paragraph/paragraph.vue'
 import { Avatar, AvatarFallback, AvatarImage } from 'components/ui/avatar'
-import { computed } from 'vue'
 import { twMerge } from 'tailwind-merge'
+import { computed } from 'vue'
 
 export interface Props {
   data: User
@@ -13,13 +13,17 @@ const props = defineProps<Props>()
 
 const name = computed(() => `${props.data.firstName} ${props.data.lastName}`)
 
-const titleColor = () => {
-  const {title} = props.data.company
+function titleColor() {
+  const { title } = props.data.company
 
-  if (title.includes('Chief')) return 'text-chart-1'
-  if (title.includes('Manager')) return 'text-chart-2'
-  if (title.includes('Admin')) return 'text-destructive'
-  if (title.includes('Analyst')) return 'text-chart-4'
+  if (title.includes('Chief'))
+    return 'text-chart-1'
+  if (title.includes('Manager'))
+    return 'text-chart-2'
+  if (title.includes('Admin'))
+    return 'text-destructive'
+  if (title.includes('Analyst'))
+    return 'text-chart-4'
   return 'text-chart-5'
 }
 

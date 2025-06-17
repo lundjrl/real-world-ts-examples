@@ -16,7 +16,7 @@
       "stores/*": ["./src/stores/*"],
       "types/*": ["./src/types/*"],
       "utils/*": ["./src/utils/*"],
-      "validations/*": ["./src/validations"]
+      "validations/*": ["./src/validations/*"]
     }
   },
   "references": [
