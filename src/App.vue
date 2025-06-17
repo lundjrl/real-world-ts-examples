@@ -5,7 +5,7 @@ import 'vue-sonner/style.css' // vue-sonner v2 requires this import
 </script>
 
 <template>
-  <Toaster />
+  <Toaster position="top-right" />
   <router-view />
 </template>
 

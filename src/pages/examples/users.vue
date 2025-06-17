@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ValidationButton from 'components/pressables/validation-button.vue'
 import UsersListingSection from 'components/sections/users-listing-section.vue'
 import BasicLayout from 'layouts/basic.vue'
 </script>

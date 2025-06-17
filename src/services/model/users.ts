@@ -1,5 +1,7 @@
 import type { User } from 'types/schema/user'
 import { isValidUser } from 'validations/user-validation'
+import { toast } from 'vue-sonner'
+import { z } from 'zod/v4'
 
 export async function getUsers(): Promise<User[]> {
   const baseUrl = import.meta.env.VITE_API_BASE_URL
@@ -21,11 +23,14 @@ export async function getUsers(): Promise<User[]> {
   return json.users
 }
 
-export async function createUser(user: User): Promise<User[] | string> {
+export async function createUser(user: Partial<User>): Promise<User[] | undefined> {
   const isValid = isValidUser(user)
 
   if (!isValid.success) {
-    return isValid.error.message
+    toast('Validation Failed', {
+      description: z.prettifyError(isValid.error),
+    })
+    return
   }
 
   const baseUrl = import.meta.env.VITE_API_BASE_URL
