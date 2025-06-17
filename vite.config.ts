@@ -17,11 +17,13 @@ export default defineConfig({
       'routing': path.resolve(__dirname, './src/routing'),
       'services': path.resolve(__dirname, './src/services'),
       'stores': path.resolve(__dirname, './src/stores'),
+      'types': path.resolve(__dirname, './src/types'),
       'utils': path.resolve(__dirname, './src/utils'),
+      'validations': path.resolve(__dirname, './src/validations'),
     },
   },
   server: {
-    port: 8081,
+    port: 8081
   },
   plugins: [vue(), tailwindcss()],
 })
