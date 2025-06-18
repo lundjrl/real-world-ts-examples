@@ -53,8 +53,8 @@ const CryptoSchema = z.object({
 
 export const UserSchema = z.object({
   id: z.optional(z.number()),
-  firstName: z.string(),
-  lastName: z.string(),
+  firstName: z.string().min(2),
+  lastName: z.string().min(2),
   maidenName: z.optional(z.string()),
   age: z.optional(z.number()),
   gender: z.optional(z.string()),

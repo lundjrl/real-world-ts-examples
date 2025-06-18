@@ -13,8 +13,8 @@ const props = defineProps<Props>()
 
 const name = computed(() => `${props.data.firstName} ${props.data.lastName}`)
 
-function titleColor() {
-  const { title } = props.data.company
+const titleColor: () => string = () => {
+  const title = props.data.company?.title ?? ''
 
   if (title.includes('Chief'))
     return 'text-chart-1'
@@ -34,7 +34,7 @@ const titleStyle = twMerge('font-bold', titleColor())
   <div class="basis-1/3 p-2">
     <div class="rounded-lg bg-primary py-2 px-3 border-gray-100 shadow shadow-gray-600">
       <Avatar class="mb-2 h-14 w-14">
-        <AvatarImage :src="props.data.image" :alt="`Profile image for ${name}`" />
+        <AvatarImage :src="props.data.image ?? ''" :alt="`Profile image for ${name}`" />
         <AvatarFallback>Profile Image of {{ name }}</AvatarFallback>
       </Avatar>
 
@@ -42,7 +42,7 @@ const titleStyle = twMerge('font-bold', titleColor())
         {{ name }}
       </Paragraph>
       <Paragraph :class="titleStyle">
-        {{ props.data.company.title }}
+        {{ props.data?.company?.title ?? 'Intern' }}
       </Paragraph>
     </div>
   </div>

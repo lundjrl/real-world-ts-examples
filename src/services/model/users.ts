@@ -23,9 +23,10 @@ export async function getUsers(): Promise<User[]> {
   return json.users
 }
 
-export async function createUser(user: Partial<User>): Promise<User[] | undefined> {
+export async function createUser(user: Partial<User>): Promise<User | undefined> {
   const isValid = isValidUser(user)
 
+  // If the user payload does not match our schema.
   if (!isValid.success) {
     toast('Validation Failed', {
       description: z.prettifyError(isValid.error),
@@ -48,6 +49,5 @@ export async function createUser(user: Partial<User>): Promise<User[] | undefine
   }
 
   const response = await fetch(url.toString(), params)
-  const json = await response.json()
-  return json.users
+  return response.json()
 }
